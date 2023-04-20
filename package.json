@@ -1,0 +1,24 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "This application is a backend API that facilitates users to exchange their ideas, respond to their friends' thoughts, and compile a list of friends. It is ideal for new social media startups and is designed to handle large amounts of unstructured data using a NOSQL database, Express.js for routing, MongoDB database, and Mongoose ODM.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XvrTeo/Social-Network-API.git"
+  },
+  "author": "Xavier Teo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XvrTeo/Social-Network-API/issues"
+  },
+  "homepage": "https://github.com/XvrTeo/Social-Network-API#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.4"
+  }
+}
