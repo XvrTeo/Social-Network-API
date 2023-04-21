@@ -2,7 +2,7 @@ const { Thought, User } = require("../models");
 
 const thoughtController = {
 
-    // get all Thoughts
+  // get all Thoughts
   getAllThought(req, res) {
     Thought.find({})
       .populate({
@@ -39,23 +39,21 @@ const thoughtController = {
   },
 
   // create Thought
-  createThought({ params, body }, res) {
+  createThought({ body }, res) {
     Thought.create(body)
-      .then(({ _id }) => {
+      .then((dbThoughtData) => {
         return User.findOneAndUpdate(
           { _id: body.userId },
-          { $push: { thoughts: _id } },
+          { $push: { thoughts: dbThoughtData._id } },
           { new: true }
         );
       })
       .then((dbUserData) => {
         if (!dbUserData) {
-          return res
-            .status(404)
-            .json({ message: "Thought created but there is no user with this id." });
+          return res.status(404).json({ message: "Thought created but there is no user with this id." });
         }
 
-        res.json({ message: "Thought has been successfully created." });
+        res.json({ message: "Thought has been successfully created.", dbThoughtData });
       })
       .catch((err) => res.json(err));
   },
